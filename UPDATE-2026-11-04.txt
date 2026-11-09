@@ -1,0 +1,17 @@
+CRYPTO BRIDGE UPDATE — 2026-11-04
+
+Current delivery notes (supersede older entries in this file):
+- Existing website architecture and supplied db.json are retained.
+- Bonus is removed from bottom navigation only; Team surfaces existing referral and bonus records.
+- Today's Earnings is a date-seeded DEMO leaderboard, stable throughout each IST day and refreshed at the next IST midnight. The reference values are shown on 04 Nov 2026; subsequent dates use simulated values.
+- Winning Information adds one simulated entry every 2 seconds, retains 10 visible rows, and formats the amount using the currency associated with the displayed country flag.
+- Winning Information and Today's Earnings are display-only; they do not write to balances or financial ledgers.
+- Assets displays Main Wallet and 3rd Wallet. Only 3rd Wallet → Main Wallet transfer is offered; the reverse direction is rejected server-side.
+- Forgot Password requires real SMTP configuration and does not simulate successful delivery.
+- WhatsApp / Telegram support settings are panel-scoped and validated by the backend.
+- Rank order is recalculated from each day's simulated amounts so the leaderboard remains sorted by earnings.
+- Demo activity timers are cleared when leaving Home or hiding the page and restarted safely when returning.
+
+Validation: run `npm install`, `npm test`, and `node --check app.js server.js admin.js`. Real SMTP, production database backup/restore, and browser-based responsive QA still require deployment-environment testing.
+
+Production limitations: JSON snapshot storage is not a multi-instance transactional ledger. Use one application instance until balance-changing operations are migrated to transactional storage.
